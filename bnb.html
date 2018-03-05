@@ -7152,3 +7152,170 @@
    "last_modified": "2016-05-13 00:25:25.368373"
  }
 ]
+
+
+
+
+//*----------------------------------------------------------------------------------------------------------------------------
+//* SCATTERPLOT-----
+
+
+
+var bnbprice = [];
+var bnbreviews = [];
+for (i=0; i < bigdata.length; i++) {
+	bnbprice.push(bigdata[i].price);
+	bnbreviews.push(bigdata[i].reviews);
+};
+
+var pricereview = {
+  x: bnbprice,
+  y: bnbreviews,
+  mode: 'markers'
+};
+
+var data1 = [ pricereview ];
+
+var layout = {
+	xaxis: {
+		title: 'Price'
+	},
+	yaxis: {
+		title: 'Number of reviews'
+	},
+}
+
+Plotly.newPlot('myDiv4', data1, layout);
+
+//* SLUT  SCATTER
+
+
+//* HISTOGRAM--
+var x = [];
+for (var i = 0; i < bigdata.length; i ++) {
+	x.push(bigdata[i].price);
+}
+
+var trace = {
+    x: x,
+    type: 'histogram',
+};
+
+var data2 = [trace];
+
+var layout2 = {
+	xaxis: {
+		title: 'Price'
+	},
+	yaxis: {
+		title: 'Number of apartments/rooms'
+	},
+}
+
+Plotly.newPlot('myDiv2', data2, layout2);
+
+//* SLUT HISTOGRAM
+
+
+//* HISTOGRAM 2----
+
+
+var x = [];
+for (var i = 0; i < bigdata.length; i ++) {
+	x.push(bigdata[i].accommodates);
+}
+
+var trace3 = {
+    x: x,
+    type: 'histogram',
+};
+
+var data5 = [trace3];
+
+var layout3 = {
+	xaxis: {
+		title: 'Number of guests'
+	},
+	yaxis: {
+		title: 'Number of apartments/rooms'
+	},
+}
+
+Plotly.newPlot('myDiv3', data5, layout3);
+
+//* SLUT  HISTOGRAM 2
+
+
+//* BOX PLOT----
+
+
+var y0 = [];
+var y1 = [];
+for (var i = 0; i < bigdata.length; i ++) {
+	y0.push(bigdata[i].price);
+	y1.push(bigdata[i].minstay);
+}
+
+var trace1 = {
+	x: y1,
+	y: y0,
+	type: 'box'
+};
+
+var data3 = [ trace1 ]
+
+var layout3 = {
+	xaxis: {
+		title: 'Minimum stay'
+	},
+	yaxis: {
+		title: 'Price'
+	},
+}
+
+Plotly.newPlot('myDiv5', data3, layout3);
+
+//* SLUT BOX PLOT
+
+
+//* PIE CHART   --
+
+
+var countpriv = 0;
+for ( var x in bigdata )
+{
+	if(bigdata[x].room_type=="Private room")
+   {
+      countpriv++;
+   }
+}
+
+var countent = 0;
+
+for ( var x in bigdata )
+{
+   if(bigdata[x].room_type=="Entire home/apt")
+   {
+      countent++;
+   }
+}
+
+var countshare = 0;
+
+for ( var x in bigdata )
+{
+if(bigdata[x].room_type=="Shared room")
+   {
+      countshare++;
+   }
+}
+
+var data4 = [{
+  values: [countpriv, countent, countshare],
+  labels: ['Private Room', 'Entire home/apt', 'Shared room'],
+  type: 'pie'
+}];
+
+Plotly.newPlot('myDiv1', data4, layout);
+
+//* SLUT PIE CHART
